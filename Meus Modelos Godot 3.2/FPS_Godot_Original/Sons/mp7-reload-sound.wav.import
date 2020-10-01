@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/mp7-reload-sound.wav-c93f61c8414229dd29c23ca9e2c78ca7.sample"
+
+[deps]
+
+source_file="res://Sons/mp7-reload-sound.wav"
+dest_files=[ "res://.import/mp7-reload-sound.wav-c93f61c8414229dd29c23ca9e2c78ca7.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

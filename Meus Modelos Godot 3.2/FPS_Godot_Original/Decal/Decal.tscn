@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Decal/Decal.gd" type="Script" id=1]
+
+[sub_resource type="SphereMesh" id=1]
+
+[sub_resource type="SpatialMaterial" id=2]
+params_cull_mode = 1
+params_grow = true
+params_grow_amount = 0.2
+albedo_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="SpatialMaterial" id=3]
+next_pass = SubResource( 2 )
+albedo_color = Color( 0, 0, 0, 1 )
+metallic = 1.0
+
+[node name="Decal" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+mesh = SubResource( 1 )
+material/0 = SubResource( 3 )
+
+[node name="TempoDeVida" type="Timer" parent="."]
+autostart = true
+[connection signal="timeout" from="TempoDeVida" to="." method="_on_TempoDeVida_timeout"]

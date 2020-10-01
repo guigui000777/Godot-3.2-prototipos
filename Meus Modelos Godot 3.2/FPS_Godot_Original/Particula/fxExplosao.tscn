@@ -1,0 +1,64 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Particula/flame.png" type="Texture" id=1]
+
+[sub_resource type="Gradient" id=1]
+colors = PoolColorArray( 0.988281, 0.635289, 0.181442, 1, 0.933594, 0.187699, 0.0656433, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="Curve" id=3]
+min_value = -200.0
+max_value = 200.0
+_data = [ Vector2( 0, 200 ), 0.0, 0.0, 0, 0, Vector2( 0.235849, -4.54544 ), 0.0, 0.0, 0, 0, Vector2( 1, -124.545 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=4]
+curve = SubResource( 3 )
+
+[sub_resource type="Curve" id=5]
+max_value = 2.5
+_data = [ Vector2( 0, 0.0453491 ), 0.0, 0.0, 0, 0, Vector2( 1, 1.8408 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=6]
+curve = SubResource( 5 )
+
+[sub_resource type="ParticlesMaterial" id=7]
+emission_shape = 1
+emission_sphere_radius = 2.0
+direction = Vector3( 0, 0, 0 )
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+linear_accel = 25.0
+linear_accel_random = 0.5
+linear_accel_curve = SubResource( 4 )
+radial_accel = 25.0
+radial_accel_random = 0.5
+scale = 3.0
+scale_curve = SubResource( 6 )
+color_ramp = SubResource( 2 )
+
+[sub_resource type="SpatialMaterial" id=8]
+flags_transparent = true
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+params_blend_mode = 1
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_texture = ExtResource( 1 )
+
+[sub_resource type="QuadMesh" id=9]
+material = SubResource( 8 )
+
+[node name="fxExplosao" type="Spatial"]
+
+[node name="Particles" type="Particles" parent="."]
+emitting = false
+amount = 100
+lifetime = 0.4
+one_shot = true
+explosiveness = 0.4
+process_material = SubResource( 7 )
+draw_pass_1 = SubResource( 9 )

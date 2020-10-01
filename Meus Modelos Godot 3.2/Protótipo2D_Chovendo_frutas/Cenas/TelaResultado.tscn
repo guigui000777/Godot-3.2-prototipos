@@ -1,0 +1,98 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Cenas/TelaResultado.gd" type="Script" id=1]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://Assets/fontes/ursoFeliz/The Happy Bear.otf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 32
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
+use_filter = true
+extra_spacing_char = 2
+font_data = SubResource( 1 )
+
+[sub_resource type="DynamicFontData" id=3]
+font_path = "res://Assets/fontes/titulo/Just One.ttf"
+
+[sub_resource type="DynamicFont" id=4]
+size = 48
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+extra_spacing_char = 1
+font_data = SubResource( 3 )
+
+[sub_resource type="DynamicFontData" id=5]
+font_path = "res://Assets/fontes/titulo/Just One.ttf"
+
+[sub_resource type="DynamicFont" id=6]
+size = 14
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+extra_spacing_char = 2
+font_data = SubResource( 5 )
+
+[node name="TelaResultado" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+modulate = Color( 0.0745098, 0.74902, 0.984314, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelResultado" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -74.0
+margin_right = 74.0
+margin_bottom = 34.0
+custom_fonts/font = SubResource( 2 )
+text = "resultado"
+uppercase = true
+
+[node name="LabelNumFrutas" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -35.5
+margin_top = -36.0
+margin_right = 35.5
+margin_bottom = 36.0
+custom_fonts/font = SubResource( 4 )
+text = "000"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="ButtonVoltar" type="Button" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -27.0
+margin_right = 44.0
+custom_fonts/font = SubResource( 6 )
+text = "Voltar"
+
+[node name="ButtonSair" type="Button" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -49.0
+margin_top = -27.0
+custom_fonts/font = SubResource( 6 )
+text = "Sair"
+[connection signal="button_down" from="ButtonVoltar" to="." method="_on_ButtonVoltar_button_down"]
+[connection signal="button_down" from="ButtonSair" to="." method="_on_ButtonSair_button_down"]

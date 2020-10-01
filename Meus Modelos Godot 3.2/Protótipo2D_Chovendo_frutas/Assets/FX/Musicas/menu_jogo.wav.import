@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/menu_jogo.wav-ce13f6b97eac1ad6884bc615b29ef549.sample"
+
+[deps]
+
+source_file="res://Assets/FX/Musicas/menu_jogo.wav"
+dest_files=[ "res://.import/menu_jogo.wav-ce13f6b97eac1ad6884bc615b29ef549.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

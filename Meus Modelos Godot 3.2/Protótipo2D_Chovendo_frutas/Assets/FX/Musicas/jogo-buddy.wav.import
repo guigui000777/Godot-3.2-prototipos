@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/jogo-buddy.wav-9b355df3bfcbdd23b238a9a84cd21d8d.sample"
+
+[deps]
+
+source_file="res://Assets/FX/Musicas/jogo-buddy.wav"
+dest_files=[ "res://.import/jogo-buddy.wav-9b355df3bfcbdd23b238a9a84cd21d8d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

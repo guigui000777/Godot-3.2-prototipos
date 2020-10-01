@@ -1,0 +1,97 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Menu/MenuPrincipal.gd" type="Script" id=1]
+[ext_resource path="res://Musica/bensound-dreams (online-audio-converter.com).wav" type="AudioStream" id=2]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://Fontes/pixel/Fipps-Regular.otf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 55
+outline_size = 5
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+extra_spacing_char = 15
+extra_spacing_space = 1
+font_data = SubResource( 1 )
+
+[sub_resource type="DynamicFontData" id=3]
+font_path = "res://Fontes/titulo/Just One.ttf"
+
+[sub_resource type="DynamicFont" id=4]
+size = 48
+use_filter = true
+extra_spacing_char = 2
+extra_spacing_space = 1
+font_data = SubResource( 3 )
+
+[node name="MenuPrincipal" type="Node"]
+script = ExtResource( 1 )
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelTitulo" type="Label" parent="Control"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -291.0
+margin_right = 291.0
+margin_bottom = 139.0
+custom_fonts/font = SubResource( 2 )
+text = "fps godot"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="ButtonStart" type="Button" parent="Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -88.7076
+margin_top = -39.0
+margin_right = 91.2924
+margin_bottom = 39.0
+custom_fonts/font = SubResource( 4 )
+text = "COMEÇAR"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonSair" type="Button" parent="Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -90.0
+margin_top = 61.0
+margin_right = 90.0
+margin_bottom = 139.0
+custom_fonts/font = SubResource( 4 )
+text = "SAIR"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TempoProxCena" type="Timer" parent="Control"]
+process_mode = 0
+wait_time = 0.05
+
+[node name="AudioMusicaMenuP" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+volume_db = -10.0
+autoplay = true
+[connection signal="button_down" from="Control/ButtonStart" to="." method="_on_ButtonStart_button_down"]
+[connection signal="button_down" from="Control/ButtonSair" to="." method="_on_ButtonSair_button_down"]
+[connection signal="timeout" from="Control/TempoProxCena" to="." method="_on_TempoProxCena_timeout"]

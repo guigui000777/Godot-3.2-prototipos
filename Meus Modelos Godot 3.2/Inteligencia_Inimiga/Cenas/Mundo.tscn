@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Cenario/Walls/Parede.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Cenario/Ground/Chao.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Inimigo/Inimigo.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scripts/Path.gd" type="Script" id=5]
+
+[sub_resource type="Curve3D" id=1]
+_data = {
+"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, -0.00662386, 0, -0.103235, 0, 0, 0, 0, 0, 0, 10.1854, 0, -5.11138, 0, 0, 0, 0, 0, 0, 17.478, 0, -16.6213, 0, 0, 0, 0, 0, 0, 19.8125, 0, -27.3368, 0, 0, 0, 0, 0, 0, 12.1685, 0, -35.5079, 0, 0, 0, 0, 0, 0, -1.09867, 0, -37.7045, 0, 0, 0, 0, 0, 0, -13.4872, 0, -32.3449, 0, 0, 0, 0, 0, 0, -19.1983, 0, -19.6049, 0, 0, 0, 0, 0, 0, -17.9682, 0, -10.2036, 0, 0, 0, 0, 0, 0, -9.18199, 0, -1.68099, 0, 0, 0, 0, 0, 0, -0.00662386, 0, -0.103235, 0, 0, 0, 0, 0, 0, -0.00662386, 0, -0.103235 ),
+"tilts": PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
+}
+
+[node name="Mundo" type="Node"]
+
+[node name="Cenario" type="Node" parent="."]
+
+[node name="Chao" parent="Cenario" instance=ExtResource( 2 )]
+
+[node name="Parede" parent="Cenario" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.511284, 0 )
+
+[node name="Parede2" parent="Cenario" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0.511284, 0 )
+
+[node name="Parede4" parent="Cenario" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.511284, 0 )
+
+[node name="Parede3" parent="Cenario" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.511284, 0 )
+
+[node name="Player" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.434, 5.94534, -18.706 )
+
+[node name="Path" type="Path" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.830521, 21.357 )
+curve = SubResource( 1 )
+script = ExtResource( 5 )
+
+[node name="Seguidor" type="PathFollow" parent="Path"]
+rotation_mode = 4
+
+[node name="Inimigo" parent="Path/Seguidor" instance=ExtResource( 3 )]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 2.5, 0 )

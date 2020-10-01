@@ -1,0 +1,15 @@
+[gd_resource type="SpatialMaterial" format=2]
+
+[resource]
+params_billboard_mode = 1
+albedo_color = Color( 0.780392, 0.00784314, 0.00784314, 1 )
+roughness = 0.62
+emission_enabled = true
+emission = Color( 0.984314, 0.0196078, 0.0196078, 1 )
+emission_energy = 7.05
+emission_operator = 0
+emission_on_uv2 = false
+ao_enabled = true
+ao_light_affect = 1.0
+ao_on_uv2 = false
+ao_texture_channel = 0

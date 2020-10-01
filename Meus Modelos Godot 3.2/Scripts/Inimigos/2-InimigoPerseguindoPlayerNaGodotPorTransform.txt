@@ -1,0 +1,26 @@
+extends KinematicBody
+
+var player = null
+var speed = 2
+var posicao_alvo = Vector3()
+
+func _ready():
+	player = get_node("/root/Mundo/Player")
+	pass
+
+func _process(delta):
+	mova_ate_o_player(delta)
+	pass
+	
+func mova_ate_o_player(delta):
+	
+	print("Player : ",player.global_transform.origin)
+	print("Inimigo : ",global_transform.origin)
+	
+	if player != null:
+		posicao_alvo = player.global_transform.origin
+		look_at(posicao_alvo,Vector3(0,1,0))
+		var direcao = (posicao_alvo - global_transform.origin).normalized()
+		var motion = direcao * speed * delta
+		global_transform.origin += motion
+	pass

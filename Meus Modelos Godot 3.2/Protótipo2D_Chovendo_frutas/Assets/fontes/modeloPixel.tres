@@ -1,0 +1,10 @@
+[gd_resource type="DynamicFont" load_steps=2 format=2]
+
+[sub_resource type="DynamicFontData" id=5]
+antialiased = false
+font_path = "res://Assets/fontes/pixel/Fipps-Regular.otf"
+
+[resource]
+size = 8
+extra_spacing_char = 2
+font_data = SubResource( 5 )

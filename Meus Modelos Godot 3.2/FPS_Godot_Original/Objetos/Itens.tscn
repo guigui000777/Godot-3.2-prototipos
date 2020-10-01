@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Objetos/Armas/M4A1/M4A1.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/Itens.gd" type="Script" id=2]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 0.267181, 0.352701, 1.61684 )
+
+[node name="Itens" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="Armas" type="Spatial" parent="."]
+
+[node name="M4A1" type="Area" parent="Armas"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Armas/M4A1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.394414, 0 )
+shape = SubResource( 1 )
+
+[node name="Modelo" parent="Armas/M4A1" instance=ExtResource( 1 )]

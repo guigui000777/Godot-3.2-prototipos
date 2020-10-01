@@ -1,0 +1,82 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "RigidBody2D",
+"class": "Carrinho",
+"language": "GDScript",
+"path": "res://Assets/carrinho/Carrinho.gd"
+}, {
+"base": "RigidBody2D",
+"class": "Fruta",
+"language": "GDScript",
+"path": "res://Assets/frutas/Fruta.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Ursinho",
+"language": "GDScript",
+"path": "res://Assets/ursinho/Ursinho.gd"
+} ]
+_global_script_class_icons={
+"Carrinho": "",
+"Fruta": "",
+"Ursinho": ""
+}
+
+[application]
+
+config/name="Chovendo_Comida"
+run/main_scene="res://Cenas/MenuPrincipal.tscn"
+config/icon="res://ursinho.png"
+
+[autoload]
+
+ScriptGlobal="*res://Script_Global.gd"
+
+[display]
+
+window/size/width=320
+window/size/height=180
+window/size/test_width=800
+window/size/test_height=600
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
+
+[input]
+
+ESQUERDA={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777231,"unicode":0,"echo":false,"script":null)
+ ]
+}
+DIREITA={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777233,"unicode":0,"echo":false,"script":null)
+ ]
+}
+PULAR={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777232,"unicode":0,"echo":false,"script":null)
+ ]
+}
+PICK={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777234,"unicode":0,"echo":false,"script":null)
+ ]
+}
+CHUTAR={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":90,"unicode":0,"echo":false,"script":null)
+ ]
+}
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"

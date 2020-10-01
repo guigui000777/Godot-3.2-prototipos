@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/bensound-dreams (online-audio-converter.com).wav-07f2f3dc3c6cda2e10322b5566a965a5.sample"
+
+[deps]
+
+source_file="res://Musica/bensound-dreams (online-audio-converter.com).wav"
+dest_files=[ "res://.import/bensound-dreams (online-audio-converter.com).wav-07f2f3dc3c6cda2e10322b5566a965a5.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

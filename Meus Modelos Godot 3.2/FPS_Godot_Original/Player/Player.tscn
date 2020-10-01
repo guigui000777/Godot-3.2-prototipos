@@ -1,0 +1,327 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://Scripts/Armas.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/CameraFPS.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Player.gd" type="Script" id=3]
+[ext_resource path="res://Player/ArmaPlayer.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Particula/MuzzleFlash.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scripts/HUD.gd" type="Script" id=6]
+[ext_resource path="res://HUD/img/musica-e-multimidia.png" type="Texture" id=7]
+[ext_resource path="res://HUD/img/arma-de-fogo.png" type="Texture" id=8]
+[ext_resource path="res://HUD/img/bala.png" type="Texture" id=9]
+[ext_resource path="res://Sons/ak47-shot.wav" type="AudioStream" id=10]
+[ext_resource path="res://Sons/empty gun shot.ogg" type="AudioStream" id=11]
+[ext_resource path="res://Sons/mp7-reload-sound.wav" type="AudioStream" id=12]
+[ext_resource path="res://Player/Lanterna/Lanterna.tscn" type="PackedScene" id=13]
+
+[sub_resource type="CapsuleShape" id=1]
+radius = 0.74744
+height = 2.14823
+
+[sub_resource type="Animation" id=2]
+tracks/0/type = "transform"
+tracks/0/path = NodePath("ArmaPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray(  )
+tracks/1/type = "value"
+tracks/1/path = NodePath("ArmaPlayer:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0.127, -1.514, -1.062 ), Vector3( 0.127, -0.696, -1.062 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ArmaPlayer:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( -29.728, 0, 0 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("ArmaPlayer:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 1, 1, 1 ), Vector3( 1, 1, 1 ) ]
+}
+
+[sub_resource type="DynamicFontData" id=3]
+font_path = "res://HUD/fontes/pixel/Fipps-Regular.otf"
+
+[sub_resource type="DynamicFont" id=4]
+size = 24
+use_filter = true
+extra_spacing_char = 1
+font_data = SubResource( 3 )
+
+[sub_resource type="DynamicFontData" id=5]
+font_path = "res://HUD/fontes/pixel/Fipps-Regular.otf"
+
+[sub_resource type="DynamicFont" id=6]
+use_filter = true
+extra_spacing_char = 1
+font_data = SubResource( 5 )
+
+[sub_resource type="DynamicFontData" id=7]
+font_path = "res://HUD/fontes/pixel/Fipps-Regular.otf"
+
+[sub_resource type="DynamicFont" id=8]
+size = 24
+use_filter = true
+extra_spacing_char = 1
+font_data = SubResource( 7 )
+
+[node name="Player" type="KinematicBody"]
+script = ExtResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 1.76562, 0 )
+shape = SubResource( 1 )
+
+[node name="Corpo" type="Spatial" parent="."]
+
+[node name="RayCastPes" type="RayCast" parent="Corpo"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.128835, 0.608272 )
+enabled = true
+cast_to = Vector3( 0, 0, 0.3 )
+collide_with_areas = true
+
+[node name="DetectaChao" type="RayCast" parent="Corpo"]
+enabled = true
+cast_to = Vector3( 0, -0.5, 0 )
+
+[node name="Cabeca" type="Spatial" parent="Corpo"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.3511, 1.31177 )
+script = ExtResource( 2 )
+
+[node name="CameraFPS" type="Camera" parent="Corpo/Cabeca"]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, -0.512564, -0.556192 )
+doppler_tracking = 1
+current = true
+near = 0.01
+far = 250.0
+
+[node name="Armas" type="Spatial" parent="Corpo/Cabeca/CameraFPS"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.05312e-06, 0 )
+script = ExtResource( 1 )
+
+[node name="ArmaPlayer" parent="Corpo/Cabeca/CameraFPS/Armas" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.127, -0.696, -1.062 )
+visible = false
+
+[node name="AnimArma" type="AnimationPlayer" parent="Corpo/Cabeca/CameraFPS/Armas"]
+playback_default_blend_time = 2.0
+playback_speed = 5.0
+anims/pegando_arma = SubResource( 2 )
+
+[node name="Position3D" type="Position3D" parent="Corpo/Cabeca/CameraFPS/Armas"]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0.139794, -0.170165, -2.7154 )
+
+[node name="Mira" type="Control" parent="Corpo/Cabeca/CameraFPS/Armas/Position3D"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Corpo/Cabeca/CameraFPS/Armas/Position3D/Mira"]
+visible = false
+margin_right = 4.0
+margin_bottom = 4.0
+color = Color( 0.988235, 0.00784314, 0.00784314, 1 )
+
+[node name="RayCastArma" type="RayCast" parent="Corpo/Cabeca/CameraFPS/Armas/Position3D"]
+enabled = true
+cast_to = Vector3( 0, 0, 50 )
+
+[node name="MuzzleFlash" parent="Corpo/Cabeca/CameraFPS/Armas/Position3D" instance=ExtResource( 5 )]
+
+[node name="SomTiroAK47" type="AudioStreamPlayer" parent="Corpo/Cabeca/CameraFPS/Armas"]
+stream = ExtResource( 10 )
+volume_db = -20.0
+
+[node name="OmniLight" type="OmniLight" parent="Corpo/Cabeca/CameraFPS/Armas"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.54549e-07, 0.0879791, -0.474309 )
+visible = false
+light_color = Color( 0.929412, 0.607843, 0.105882, 1 )
+light_energy = 20.0
+light_indirect_energy = 2.0
+light_specular = 1.0
+shadow_enabled = true
+omni_range = 10.0
+
+[node name="SomArmaVaziaAk47" type="AudioStreamPlayer" parent="Corpo/Cabeca/CameraFPS/Armas"]
+stream = ExtResource( 11 )
+volume_db = -20.0
+
+[node name="TempoSomTiroVazio" type="Timer" parent="Corpo/Cabeca/CameraFPS/Armas"]
+wait_time = 0.1
+
+[node name="AudioRecarregaAk47" type="AudioStreamPlayer" parent="Corpo/Cabeca/CameraFPS/Armas"]
+stream = ExtResource( 12 )
+volume_db = 2.0
+pitch_scale = 5.0
+
+[node name="Lanterna" parent="Corpo/Cabeca/CameraFPS/Armas" instance=ExtResource( 13 )]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.148, -0.171, 0.027 )
+
+[node name="HUD" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -640.0
+margin_top = -300.0
+margin_right = 640.0
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="HUD"]
+modulate = Color( 1, 1, 1, 0.105882 )
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -10.0
+margin_right = -960.0
+margin_bottom = -9.99997
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelVida2" type="Label" parent="HUD"]
+margin_left = 20.0
+margin_top = -1.758
+margin_right = 121.0
+margin_bottom = 65.242
+custom_fonts/font = SubResource( 4 )
+text = "VIDA"
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelVida" type="Label" parent="HUD"]
+margin_left = 96.7839
+margin_top = 64.9179
+margin_right = 261.784
+margin_bottom = 124.918
+custom_fonts/font = SubResource( 4 )
+text = "x"
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelNomeMunicao" type="Label" parent="HUD"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 22.2161
+margin_top = -121.758
+margin_right = 136.216
+margin_bottom = -81.7579
+custom_fonts/font = SubResource( 6 )
+text = "Munição"
+align = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelMunicao" type="Label" parent="HUD"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 120.0
+margin_top = -71.758
+margin_right = 270.0
+margin_bottom = -11.758
+custom_fonts/font = SubResource( 8 )
+text = "x"
+uppercase = true
+
+[node name="imgVida" type="TextureRect" parent="HUD"]
+margin_left = 20.0
+margin_top = 58.242
+margin_right = 84.0
+margin_bottom = 122.242
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="imgArma" type="TextureRect" parent="HUD"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = -85.758
+margin_right = 84.0
+margin_bottom = -21.758
+texture = ExtResource( 8 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="imgMunicao" type="TextureRect" parent="HUD"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 70.0
+margin_top = -51.7581
+margin_right = 94.0
+margin_bottom = -27.7581
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 5
+
+[node name="imgMunicao2" type="TextureRect" parent="HUD"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 80.0
+margin_top = -51.7581
+margin_right = 104.0
+margin_bottom = -27.7581
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 5
+
+[node name="imgMunicao3" type="TextureRect" parent="HUD"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 90.0
+margin_top = -51.7581
+margin_right = 114.0
+margin_bottom = -27.7581
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 5
+
+[node name="TempoDeTiro" type="Timer" parent="."]
+wait_time = 0.1
+[connection signal="timeout" from="Corpo/Cabeca/CameraFPS/Armas/TempoSomTiroVazio" to="Corpo/Cabeca/CameraFPS/Armas" method="_on_TempoSomTiroVazio_timeout"]
+[connection signal="timeout" from="TempoDeTiro" to="." method="_on_TempoDeTiro_timeout"]

@@ -1,0 +1,125 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://Assets/hud/HUD.gd" type="Script" id=1]
+[ext_resource path="res://Assets/hud/frutasHUD.png" type="Texture" id=3]
+[ext_resource path="res://Assets/hud/clock.png" type="Texture" id=4]
+[ext_resource path="res://Assets/hud/hud_fruta0.tscn" type="PackedScene" id=5]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://Assets/fontes/pixel/Fipps-Regular.otf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 6
+extra_spacing_char = 1
+font_data = SubResource( 1 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 3 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 3 )
+region = Rect2( 32, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 3 )
+region = Rect2( 48, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 3 )
+region = Rect2( 64, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 3 )
+region = Rect2( 80, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 32, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 3 )
+region = Rect2( 16, 32, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 3 )
+region = Rect2( 32, 32, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 3 )
+region = Rect2( 48, 32, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 3 )
+region = Rect2( 64, 32, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 3 )
+region = Rect2( 80, 32, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=15]
+animations = [ {
+"frames": [ null, SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="HUD" type="Control"]
+margin_right = 320.0
+margin_bottom = 40.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="clock" type="Sprite" parent="."]
+position = Vector2( 160, 10 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 4 )
+
+[node name="labelTempo" type="Label" parent="."]
+margin_left = 170.0
+margin_top = 7.0
+margin_right = 210.0
+margin_bottom = 23.0
+custom_fonts/font = SubResource( 2 )
+text = "x60"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Grupo_hud_frutas" type="Node" parent="."]
+
+[node name="hud_fruta0" parent="Grupo_hud_frutas" instance=ExtResource( 5 )]
+frames = SubResource( 15 )
+hud_fruta_frame = 1
+
+[node name="hud_fruta1" parent="Grupo_hud_frutas" instance=ExtResource( 5 )]
+position = Vector2( 30, 10 )
+frames = SubResource( 15 )
+hud_fruta_frame = 2
+
+[node name="hud_fruta2" parent="Grupo_hud_frutas" instance=ExtResource( 5 )]
+position = Vector2( 50, 10 )
+frames = SubResource( 15 )
+hud_fruta_frame = 3
+
+[node name="hud_fruta3" parent="Grupo_hud_frutas" instance=ExtResource( 5 )]
+position = Vector2( 70, 10 )
+frames = SubResource( 15 )
+hud_fruta_frame = 4
+
+[node name="hud_fruta4" parent="Grupo_hud_frutas" instance=ExtResource( 5 )]
+position = Vector2( 90, 10 )
+frames = SubResource( 15 )
+hud_fruta_frame = 5
+
+[node name="hud_fruta5" parent="Grupo_hud_frutas" instance=ExtResource( 5 )]
+position = Vector2( 110, 10 )
+frames = SubResource( 15 )
+hud_fruta_frame = 6
