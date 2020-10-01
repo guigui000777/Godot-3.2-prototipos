@@ -1,4 +1,4 @@
-# Godot-3.2-prototipos
+# Godot-3.2-protótipos
  Protótipos 3D relacionados a Godot Engine 3.2
 
  Existem duas pastas com conteúdos interessantes relacionado a Godot Engine 3.2. 
